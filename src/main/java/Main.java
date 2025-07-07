@@ -1,0 +1,133 @@
+/* 
+   *Métodos devem SEMPRE pertencer a uma classe
+   *Métodos soltos não funcionam, tudo em java está numa classe
+   Padrão CamelCase em ClassesJava
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        TiposVariaveis();
+        Main.EntradaDados();
+        estruturaCondicional();
+    }
+
+    public static void TiposVariaveis(){
+        /*
+         * Declarações de tipos primitivos: <tipo> <nome> = <valor> (é opcional);
+         * São armazenadas na stack da memória RAM
+         * Para receber vírgula ao invés de ponto Locale.setDefault(Locale.US)
+         */
+        byte bytes = 1; //8 bits de -128 a 127
+        short comprido = 1200; // 16 bits
+        int idade = 25; // 32 bits
+        long inteiroLongo = 12030102; //64 bits
+        //Por padrão todo ponto flutuante é double, 'f' converte para float
+        float impreciso = 14.654676f; //32 bits pouco preciso
+        double maisPreciso = 1.72; // 64 bits um pouco mais preciso
+        char sexo = 'M'; // 16 bits também pode receber unicode '\uFFFF'
+        String nome = "Igor";
+        boolean gay = false; // 1 bit
+        int a, b;
+        double resultado;
+
+        System.out.printf("Definindo 2 casas %.2f, adicionando inteiro %d, adicionando texto %s%n", impreciso, idade, nome);
+        a = 5;
+        b = 6;
+
+        //Sem o casting double o compilador retorna um inteiro
+        resultado = (double) a / b;
+        System.out.println(resultado);
+    }
+
+    public static void EntradaDados() {
+        Scanner sc = new Scanner(System.in);
+        String fraseCompleta;
+        String x, y;
+        int z;
+        //Recebe apenas os primeiros valores de cada tipo separados por espaço
+        System.out.println("Informe uma palavra, um nunero inteiro e um inteiro em sequencia");
+        x = sc.next();
+        y = sc.next();
+        z = sc.nextInt();
+        System.out.printf("%s, %s, %d%n", x, y, z);
+        //Recebendo uma linha inteira
+        System.out.println("Insira uma frase completa");
+        //Se algum metodo de entrada for chamado antes do nextLine, sc.nextLine() deve ser chamado antes para "limpar" resquícios.
+        sc.nextLine();
+        fraseCompleta = sc.nextLine();
+        System.out.printf("A frase digitada foi: %s%n", fraseCompleta);
+        sc.close();
+    }
+
+    public static void estruturaCondicional() {
+        int a, b;
+        Scanner sc = new Scanner(System.in);
+
+        //Comparações
+        System.out.println("Informe dois números inteiros: ");
+        a = sc.nextInt();
+        b = sc.nextInt();
+        if (a == b) {
+            System.out.printf("O numero %d é igual a  %d", a, b);
+        } else if (a > b) {
+            System.out.printf("O numero %d é maior que %d", a, b);
+        } else if (a < b) {
+            System.out.printf("O numero %d é maior que %d", b, a);
+        }
+	//outros comparativos: >= (maior igual)  <= (menor igual)  != (diferente de)
+
+	//Expressão Lógicas: && (e) || (ou) !(não)
+        if (a < 20 && a > -1) {
+            System.out.printf("%d é menor que 20 mas não é negativo", a);
+        }
+        if (b > 15 || b < 0) {
+            System.out.printf("%d é maior que 15 ou menor que 0", b);
+        }
+
+        /*Estrutura Condiciona, "if" ja foi apresentado*/
+        //Estrutura Switch-case
+        String diaDaSemana;
+        int num = sc.nextInt();
+        diaDaSemana = switch (num) {
+            case 1 -> "Segunda";
+            case 2 -> "Terça";
+            case 3 -> "Quarta";
+            case 4 -> "Quinta";
+            case 5 -> "Sexta";
+            case 6 -> "Sábado";
+            case 7 -> "Domingo";
+            default -> "Dia invalido";
+        };
+
+        System.out.printf("Dia da semana: %s", diaDaSemana);
+
+        char sexo = 'F';
+        switch (sexo) {
+            case 'F':
+                System.out.println("É fêmea");
+            case 'M':
+                System.out.println("É macho");
+            default:
+                System.out.println("Erro na Matrix");
+        }
+
+
+	/*Expressão Ternaria
+	  (expressão) ? valor_se_verdadeiro : valor_se_falso;
+	 */
+        System.out.printf("%s", (121 > 30) ? "maior que 30" : "menor que 30");
+
+
+        sc.close();
+    }
+
+    public static void EscoposEstruturaDeControle() {
+        //Cada estrutura de repetição possui um escopo próprio
+        double price = 34.5;
+
+
+    }
+}
+
