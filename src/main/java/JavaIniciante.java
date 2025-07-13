@@ -1,8 +1,7 @@
 /* 
-   Métodos devem SEMPRE pertencer a uma classe
-   Padrão PascalCase em Classes
-   Padrão camelCase: pacots, metodos, atributos, variáveis e parâmetros
-   
+   *Métodos devem SEMPRE pertencer a uma classe
+   *Métodos soltos não funcionam, tudo em java está numa classe
+   Padrão CamelCase em ClassesJava
 */
 
 import java.util.Scanner;
@@ -15,8 +14,8 @@ public class Main {
     }
 
     public static void TiposVariaveis(){
-        /* Declarações de tipos primitivos: <tipo> <nome> = <valor> (é opcional);
-	 * Apesar de ser opcional, para ser utilizada a variável tem que possuir um valor.
+        /*
+         * Declarações de tipos primitivos: <tipo> <nome> = <valor> (é opcional);
          * São armazenadas na stack da memória RAM
          * Para receber vírgula ao invés de ponto Locale.setDefault(Locale.US)
          */
@@ -28,7 +27,7 @@ public class Main {
         float impreciso = 14.654676f; //32 bits pouco preciso
         double maisPreciso = 1.72; // 64 bits um pouco mais preciso
         char sexo = 'M'; // 16 bits também pode receber unicode '\uFFFF'
-        String nome = "Igor"; //Não é primitivo maas sim um objeto
+        String nome = "Igor";
         boolean gay = false; // 1 bit
         int a, b;
         double resultado;
@@ -47,7 +46,7 @@ public class Main {
         String fraseCompleta;
         String x, y;
         int z;
-        //Recebe valores de cada tipo separados por espaço
+        //Recebe apenas os primeiros valores de cada tipo separados por espaço
         System.out.println("Informe uma palavra, um nunero inteiro e um inteiro em sequencia");
         x = sc.next();
         y = sc.next();
@@ -55,7 +54,7 @@ public class Main {
         System.out.printf("%s, %s, %d%n", x, y, z);
         //Recebendo uma linha inteira
         System.out.println("Insira uma frase completa");
-        //sc.nextLine() deve ser chamado para "limpar" resquícios de chamadas diferentes de sc.
+        //Se algum metodo de entrada for chamado antes do nextLine, sc.nextLine() deve ser chamado antes para "limpar" resquícios.
         sc.nextLine();
         fraseCompleta = sc.nextLine();
         System.out.printf("A frase digitada foi: %s%n", fraseCompleta);
@@ -87,7 +86,7 @@ public class Main {
             System.out.printf("%d é maior que 15 ou menor que 0", b);
         }
 
-
+        /*Estrutura Condiciona, "if" ja foi apresentado*/
         //Estrutura Switch-case
         String diaDaSemana;
         int num = sc.nextInt();
@@ -125,65 +124,10 @@ public class Main {
     }
 
     public static void EscoposEstruturaDeControle() {
-        //Cada estrutura de repetição possui um escopo próprio.
+        //Cada estrutura de repetição possui um escopo próprio
         double price = 34.5;
 
-	//Estrutura de um while (enquanto) -> while(condição) {código;}
-	while(price<50){
-	    System.out.printf("%f", price);
-	    price += 0.5;
-	}
 
-	//Executa pelo menos 1 vez, a condição é averiguada no final] -> do{codigo;}while(condicao);
-	do{
-	    price -= price*0.1;
-	} while (price < 40);
-
-
-	// -> for (inicio: void; condição: boolean; final: void){codigo;}
-	for (double i = 0; i < price; i++){
-	    System.out.printf("%f", i);
-	}	
     }
-
-    public static class OperadoresBitwise(){
-	/*Lógica: & "E"; | "OU"; ^ "OU-exclsivo"
-	  0101 1001 & 0011 1100 = 0001 1000
-          0101 1001 | 0011 1100 = 0111 1101
-	            ^           = 0110 0101
-	 */
-	
-	int verificador = 32;
-	//0b indica que é um binario literal
-	int verificadorEmBinario = 0b00100000;
-	int x1 = 89;
-	int x2 = 60;
-	System.out.println(x1 & x2);
-	System.out.println(x1 ^ x2);
-    }
-
-    public static void FuncoesString(){
-	String original = "abcd FGHIJ ABC abc DEFG    -";
-	//precisamos de um vetor para podermos usar split
-	String[] vetorString = original.split(" ");
-	System.out.println(original);
-	System.out.printf("Minusculos: %s%n", original.toLowerCase());
-	System.out.printf("Maiusculas: %s%n ",original.toUpperCase());
-	System.out.printf("Removendo espaços em branco em excesso: %s%n", original.trim());
-	System.out.println("Nova string a partir do item 2",original.substring(2));
-	System.out.println("Nova string a partir do item 2 até o 9",original.substring(2, 9));
-	System.out.printf("Substituindo a por x: %s%n",original.replac("a","x"));
-	System.out.printf("Firts index de abcd: %s%n",original.indexOF("abcd"));
-	System.out.println("Ultimo Index de a: %s%n", original.lastIndexOf("a"));
-	System.out.println("Vetor resultado do split: ");
-	if(vetorString.length < 0){
-	    System.out.println("As strings formadas de split");
-	    for(int i = 0; i < vetorString.legng){
-		System.out.println(vetorString[0]);
-	    }
-	} else{
-	    System.out.println("Erro, tamanho inferior a 1");
-	}
-    }
-    
 }
+
