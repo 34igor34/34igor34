@@ -1,23 +1,25 @@
 /* 
    Métodos devem SEMPRE pertencer a uma classe
    Padrão PascalCase em Classes
-   Padrão camelCase: pacotes, métodos, atributos, variáveis e parâmetros
-   
+   Padrão camelCase: pacotes, méodos, atributos, 
+variáveis e parâmetros
 */
-
 import java.util.Scanner;
+import com.curso.basico.*;
 
-public class Main {
+public class Main{
     static int contador = 0;
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         TiposVariaveis();
-        Main.EntradaDados();
-        estruturaCondicional();
+        EntradaDados.executar(sc);
+        estruturaCondicional(sc);
         EscoposEstruturaDeControle();
         OperadoresBitwise();
         FuncoesString();
-        EstruturasRepetitivas();
+        EstruturasRepetitivas(sc);
+        sc.close();
     }
 
     public static void TiposVariaveis() {
@@ -51,79 +53,92 @@ public class Main {
 
         //Sem o casting double o compilador retorna um inteiro
         resultado = (double) a / b;
-        System.out.println(resultado);
+        System.out.printf("Resultado: %.2f%n",resultado);
     }
 
-    public static void EntradaDados() {
-        Scanner sc = new Scanner(System.in);
+    public static void EntradaDados(Scanner sc) {
         String fraseCompleta;
         String x, y;
         int z;
         //Recebe valores de cada tipo separados por espaço
-        System.out.println("Informe uma palavra, um nunero inteiro e um inteiro em sequencia");
+        System.out.println("Informe duas palavra e um nunero inteiro");
         x = sc.next();
         y = sc.next();
         z = sc.nextInt();
         System.out.printf("%s, %s, %d%n", x, y, z);
         //Recebendo uma linha inteira
-        System.out.println("Insira uma frase completa");
         //sc.nextLine() deve ser chamado para "limpar" resquícios de chamadas diferentes de sc.
         sc.nextLine();
+        System.out.println("Insira uma frase completa");
         fraseCompleta = sc.nextLine();
         System.out.printf("A frase digitada foi: %s%n", fraseCompleta);
-        sc.close();
     }
 
-    public static void estruturaCondicional() {
+    public static void estruturaCondicional(Scanner sc) {
         int a, b;
-        Scanner sc = new Scanner(System.in);
-
         //Comparações
         System.out.println("Informe dois números inteiros: ");
         a = sc.nextInt();
         b = sc.nextInt();
         if (a == b) {
-            System.out.printf("O numero %d é igual a  %d", a, b);
+            System.out.printf("O numero %d é igual a  %d%n", a, b);
         } else if (a > b) {
-            System.out.printf("O numero %d é maior que %d", a, b);
+            System.out.printf("O numero %d é maior que %d%n", a, b);
         } else {
-            System.out.printf("O numero %d é maior que %d", b, a);
+            System.out.printf("O numero %d é maior que %d%n", b, a);
         }
         //outros comparativos: >= (maior igual)  <= (menor igual)  != (diferente de)
 
         //Expressão Lógicas: && (e) || (ou) !(não)
         if (a < 20 && a > -1) {
-            System.out.printf("%d é menor que 20 mas não é negativo", a);
+            System.out.printf("%d é menor que 20 mas não é negativo%n", a);
         }
         if (b > 15 || b < 0) {
-            System.out.printf("%d é maior que 15 ou menor que 0", b);
+            System.out.printf("%d é maior que 15 ou menor que 0%n", b);
         }
 
 
         //Estrutura Switch-case
-        String diaDaSemana;
+        System.out.println("Informe um numero que corresponda a um dia da semana: ");
         int num = sc.nextInt();
-        diaDaSemana = switch (num) {
-            case 1 -> "Segunda";
-            case 2 -> "Terça";
-            case 3 -> "Quarta";
-            case 4 -> "Quinta";
-            case 5 -> "Sexta";
-            case 6 -> "Sábado";
-            case 7 -> "Domingo";
-            default -> "Dia invalido";
-        };
-        System.out.printf("Dia da semana: %s", diaDaSemana);
-
+        String diaDaSemana;
+        switch (num) {
+            case 1:
+                diaDaSemana = "Segunda";
+                break;
+            case 2:
+                diaDaSemana = "Terça";
+                break;
+            case 3:
+                diaDaSemana = "Quarta";
+                break;
+            case 4:
+                diaDaSemana = "Quinta";
+                break;
+            case 5:
+                diaDaSemana = "Sexta";
+                break;
+            case 6:
+                diaDaSemana = "Sábado";
+                break;
+            case 7:
+                diaDaSemana = "Domingo";
+                break;
+            default:
+                diaDaSemana = "Dia inválido";
+         }
+        System.out.printf("Dia da semana: %s%n", diaDaSemana);
         System.out.print("Digite um caractere de seu sexo: ");
         char sexo = sc.next().charAt(0);
         switch (sexo) {
             case 'F':
                 System.out.println("É fêmea");
+                break;
             case 'M':
                 System.out.println("É macho");
+                break;
             default:
-                System.out.println("Erro na Matrix");
+                System.out.println("Espere por atualizações");
         }
 
 
@@ -132,32 +147,30 @@ public class Main {
 	 */
         System.out.println("Informe um número: ");
         a = sc.nextInt();
-        System.out.printf("%s", (a > 30) ? "maior que 30" : "menor que 30");
-
-
-        sc.close();
+        System.out.printf("%s%n", (a > 30) ? "maior que 30" : "menor que 30");
     }
 
-    public static void EstruturasRepetitivas() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Informe um número inteiro decimal para adicionar a contagem que seja diferente de zero: ");
-        int numerosDeEntrada = sc.nextInt();
-        int soma = 0;
-        //Enquanto for verdadeiro irá executar
-        while (numerosDeEntrada != 0) {
-            numerosDeEntrada = sc.nextInt();
-            soma += numerosDeEntrada;
-        }
-        System.out.println("Total: " + soma);
-
+    public static void EstruturasRepetitivas(Scanner sc) {
+        int numerosDeEntrada = 0;
+        int soma = 5;
+        int tentativa;
+        
         //Estrutura while exercício 01: continua ao usar o código certo
         System.out.println("Adicione um valor até acertar o código: ");
-        int tentativa = sc.nextInt();
+        int chute = sc.nextInt();
         int codigo = 2002;
-        while (tentativa != codigo) {
+        while (chute != codigo) {
+	           System.out.printf("Incorreto! Você tem mais %d tentativa(s): %n", soma);
             tentativa = sc.nextInt();
+	           soma -=1;
+	           if (soma == 0){
+		              System.out.println("Você não conseguiu descobrir o código");
+		              break;
+	           }
         }
-        System.out.println("Acertou o código era 2002");
+	       if(chute == codigo){
+	           System.out.println("Acertou o código era 2002");
+	       }
 
         //01: Quadrante do plano cartesiano
         System.out.println("Informe 2 coordenadas para saber em qual quadrante se encaixa: ");
@@ -173,25 +186,27 @@ public class Main {
             coordenadaB = sc.nextInt();
         }
 
-        //*Estrutura for(início; condição; incremento){comandos...} | Usar quando quantidade total é conhecidaGIT
-        for (int i = 0; i < 60; i++) {
+        //*Estrutura for(início; condição; incremento){comandos...} | Usar quando quantidade total é conhecida
+        for (int i = 0; i < 20; i++) {
             System.out.println(i);
         }
-        /*O for pode ser visto como (inicio() -> void; condição() -> boolean; incremento() -> void)
-         *Lembrando onde cada termo é chamado e o que aceita as possibilidades são infinitas.
-         */
-        for (inicializa(); condicao(); incrementa()) {
-            System.out.println("Executando: contador = " + contador);
-        }
-        sc.close();
+	
         soma = 0;
         do {
-            System.out.println("Informe um número inteiro decimal para adicionar a contagem que seja diferente de zero: ");
+            System.out.println("Informe um número inteiro decimal para adicionar a contagem  e use zero para encerrar: ");
             numerosDeEntrada = sc.nextInt();
             soma += numerosDeEntrada;
         }   while (numerosDeEntrada != 0);
         System.out.println("Total :" + soma);
+   
+	/*Visão alternativa (inicio - primeiro loop() -> void; inicio todo loop condição() -> boolean ; final incremento() -> void)
+         *Lembrando onde cada termo é chamado e o que aceita as possibilidades são infinitas.
+         */
+	       for (inicializa(); condicao(); incrementa()) {
+            System.out.println("Executando: contador = " + contador);
+        }
     }
+        
 
     public static void inicializa() {
         contador = 1;
@@ -208,14 +223,15 @@ public class Main {
     }
 
 
+
     public static void EscoposEstruturaDeControle() {
         //Cada estrutura de repetição possui um escopo próprio.
         double price = 34.5;
 
         //Estrutura de um while (enquanto) -> while(condição) {código;}
         while (price < 50) {
-            System.out.printf("%f", price);
-            price += 0.5;
+            System.out.printf("%.2f%n", price);
+            price += 1.5;
         }
 
         //Executa pelo menos 1 vez, a condição é averiguada no final → do{codigo;}while(condicao);
@@ -226,7 +242,7 @@ public class Main {
 
         // -> for (inicio: void; condição: boolean; final: void){codigo;}
         for (double i = 0; i < price; i++) {
-            System.out.printf("%f", i);
+            System.out.printf("%f%n", i);
         }
     }
 
@@ -254,8 +270,8 @@ public class Main {
         System.out.printf("Minusculos: %s%n", original.toLowerCase());
         System.out.printf("Maiusculas: %s%n ", original.toUpperCase());
         System.out.printf("Removendo espaços em branco em excesso: %s%n", original.trim());
-        System.out.printf("Nova string a partir do item 2: %s", original.substring(2));
-        System.out.printf("Nova string a partir do item 2 até o 9: %s", original.substring(2, 9));
+        System.out.printf("Nova string a partir do item 2: %s%n", original.substring(2));
+        System.out.printf("Nova string a partir do item 2 até o 9: %s%n", original.substring(2, 9));
         System.out.printf("Substituindo a por x: %s%n", original.replace("a", "x"));
         System.out.printf("Firts index de abcd: %s%n", original.indexOf("abcd"));
         System.out.printf("Ultimo Index de a: %s%n", original.lastIndexOf("a"));
@@ -266,5 +282,4 @@ public class Main {
 
         }
     }
-
 }
