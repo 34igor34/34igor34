@@ -30,7 +30,6 @@ public class TiposVariaveis{
         b = 6;
 
         //Sem o casting double o compilador retorna um inteiro
-        resultado = (double) a / b;
-        System.out.println(resultado);
+        System.out.printf("5/6 resultado utilizando casting %f e resultado sem casting %d%n",((double) a / b), (a / b));
     }
 }

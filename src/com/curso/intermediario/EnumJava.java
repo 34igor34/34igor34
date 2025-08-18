@@ -1,5 +1,5 @@
 package com.curso.intermediario;
 
-public class Sobrecarga {
+public class EnumJava {
     
 }

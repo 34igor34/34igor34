@@ -6,19 +6,22 @@ variáveis e parâmetros
 */
 import java.util.Scanner;
 import com.curso.basico.*;
+import com.curso.intermediario.*;
 
 public class Main{
     static int contador = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        TiposVariaveis();
+        Memoria.executar();
+        TiposVariaveis.executar();
         EntradaDados.executar(sc);
         estruturaCondicional(sc);
         EscoposEstruturaDeControle();
         OperadoresBitwise();
         FuncoesString();
         EstruturasRepetitivas(sc);
+        ConstrutorJava.executar();
         sc.close();
     }
 
